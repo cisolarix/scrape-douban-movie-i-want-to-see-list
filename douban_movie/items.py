@@ -5,9 +5,9 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
 
-import scrapy
+from scrapy.item import Item, Field
 
 
-class DoubanMovieItem(scrapy.Item):
-    title_cn = scrapy.Field()
-    title_en = scrapy.Field()
+class DoubanMovieItem(Item):
+    title_cn = Field()
+    title_en = Field()

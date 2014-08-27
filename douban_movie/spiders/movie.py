@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
+
 import scrapy
+
+from scrapy.spider import BaseSpider
+from scrapy.selector import HtmlXPathSelector
+from scrapy.contrib.loader import XPathItemLoader
+from scrapy.contrib.loader.processor import Join, MapCompose
 
 from douban_movie.items import DoubanMovieItem
 
@@ -15,9 +21,8 @@ class MovieSpider(scrapy.Spider):
       for sel in response.xpath("/html/body/div[@id='wrapper']/div[@id='content']/div/div[@class='article']/ul[@class='list-view']/li[@class='item']/div[@class='item-show']/div[@class='title']"):
         movie = DoubanMovieItem()
         title = sel.xpath('a/text()').extract()
-        # print title
         # link  = sel.xpath('a/@href').extract()
         title_arr = title[0].split('/')
-        # movie.title_cn = title_arr[0].strip()
-        # movie.title_en = title_arr[1].strip()
-        print title_arr[0].strip(), title_arr[1].strip()
+        movie['title_cn'] = title_arr[0].strip()
+        movie['title_en'] = title_arr[1].strip()
+        yield movie

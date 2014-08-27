@@ -15,3 +15,14 @@ NEWSPIDER_MODULE = 'douban_movie.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'douban_movie (+http://www.yourdomain.com)'
+
+ITEM_PIPELINES = ['douban_movie.pipelines.DoubanMoviePipeline']
+
+DATABASE = {
+  'drivername': 'mysql',
+  'host'      : 'localhost',
+  'port'      : '3306',
+  'username'  : 'root',
+  'password'  : 'root',
+  'database'  : 'douban_movie'
+}
