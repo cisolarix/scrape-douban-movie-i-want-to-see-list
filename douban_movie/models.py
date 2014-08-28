@@ -19,6 +19,8 @@ def create_movies_table(engine):
 class Movies(DeclarativeBase):
     __tablename__ = "movies"
     
-    id       = Column(Integer, primary_key=True)
-    title_cn = Column('title_cn', String)
-    title_en = Column('title_en', String, nullable=True)
+    id             = Column(Integer, primary_key=True)
+    title_cn       = Column('title_cn', String)
+    title_original = Column('title_original', String, nullable=True)
+    title_alias    = Column('title_alias', String, nullable=True)
+    link           = Column('link', String, nullable=True)

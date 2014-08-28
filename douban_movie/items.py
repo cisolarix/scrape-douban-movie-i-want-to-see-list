@@ -9,5 +9,7 @@ from scrapy.item import Item, Field
 
 
 class DoubanMovieItem(Item):
-    title_cn = Field()
-    title_en = Field()
+    title_cn       = Field()
+    title_original = Field()
+    title_alias    = Field()
+    link           = Field()
